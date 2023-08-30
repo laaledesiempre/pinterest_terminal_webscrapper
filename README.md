@@ -16,8 +16,8 @@ Hi, this app was made for personal use and learning about web scrapping, this ap
 
 - You can make an Alias! like this (only for linux/unix and git bash by default)
 
-```
-alias -S name_that_you_want="python3 /path/to/app"
+```bash
+alias -s name_that_you_want="python3 /path/to/app"
 ```
 
 > ## Is web scrapping legal?
