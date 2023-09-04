@@ -53,6 +53,7 @@ while True:
     What do yo tant to do?
     1) Scrapppppp
     2) Download many :3
+    3) Download from a list
     S) Exit
   """)
   response = input("Option: ")
@@ -101,7 +102,7 @@ while True:
         print_empty_line()
 
   elif response == "2": #2
-    
+
     print("In this mode, you can put all the links you want one by one, and it will download automaticaly")
 
     while True:
@@ -109,7 +110,7 @@ while True:
 
         if url.lower() == "s":
           break
-        
+
         try:
           link = scrap_pinterest_image(url)
           name_for_file = link[-10:]
@@ -124,6 +125,30 @@ while True:
             print("\t\t", error)
             print_empty_line()
 
+  elif response =="3":
+    while True:
+      url= input("Paste the URLs separeted with coma or write s to skip: ")
+
+      if url.lower() == "s":
+        break
+      
+      try:
+        listed_url= url.split(",")
+        for x in listed_url:
+            link = scrap_pinterest_image(x.strip())
+            name_for_file = link[-10:]
+            open(name_for_file, 'wb').write(requests.get(link).content)
+            print(f"file {name_for_file} Downloaded succesfully")
+      except Exception as error:
+            print("""
+    Something went wrong, if problem persist make an issue on Github
+            """)
+
+            print("\tError message (may help c: ):")
+            print("\t\t", error)
+            print_empty_line()
+
+
 
   elif response.lower() == "s": # S
     break
@@ -131,4 +156,3 @@ while True:
   else: # else
     print("Thats not a valid option pal :c")
     press_to_continue()
-
